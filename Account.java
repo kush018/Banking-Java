@@ -89,7 +89,7 @@ public class Account {
         for (int i = 0; i < arrayLength; i++) {
             newArray[i] = array[i];
         }
-        newArray[arrayLength + 1] = element;
+        newArray[arrayLength] = element;
         return newArray;
     }
 }
