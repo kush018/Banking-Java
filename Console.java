@@ -207,7 +207,7 @@ public class Console {
                 if (commandArray.length == 2) {
                     int accountNumber = Integer.parseInt(commandArray[1]);
                     Account account = accounts[accountNumber];
-                    DateClass DOB = account.getDateOfBirth();
+                    Date DOB = account.getDateOfBirth();
                     System.out.println("dd/mm/yyyy");
                     System.out.println(DOB.getDate() + "/" + DOB.getMonth() + "/" + DOB.getYear());
                 }
@@ -227,7 +227,7 @@ public class Console {
                 if (commandArray.length == 2) {
                     int accountNumber = Integer.parseInt(commandArray[1]);
                     Account account = accounts[accountNumber];
-                    DateClass joinDate = account.getJoinDate();
+                    Date joinDate = account.getJoinDate();
                     System.out.println("dd/mm/yyyy");
                     System.out.println(joinDate.getDate() + "/" + joinDate.getMonth() + "/" + joinDate.getYear());
                 }
@@ -285,9 +285,9 @@ public class Console {
             return;
         }
         String[] dateOfBirthArray = dateOfBirthString.split("/");
-        DateClass dateOfBirth;
+        Date dateOfBirth;
         try {
-            dateOfBirth = new DateClass(Integer.parseInt(dateOfBirthArray[0]), Integer.parseInt(dateOfBirthArray[1]), Integer.parseInt(dateOfBirthArray[2]));
+            dateOfBirth = new Date(Integer.parseInt(dateOfBirthArray[0]), Integer.parseInt(dateOfBirthArray[1]), Integer.parseInt(dateOfBirthArray[2]));
         }
         catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Invalid date entered. Operation cancelled.");

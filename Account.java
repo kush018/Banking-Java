@@ -2,17 +2,17 @@ public class Account {
     private double balance;
     private int age;
     private String firstName, lastName, gender;
-    private DateClass dateOfBirth, joinDate;
+    private Date dateOfBirth, joinDate;
 
     private double[] transactionHistory = new double[] { };
 
-    public Account(String firstName, String lastName, String gender, DateClass dateOfBirth) {
+    public Account(String firstName, String lastName, String gender, Date dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         balance = 0d;
-        joinDate = new DateClass();
+        joinDate = new Date();
         age = joinDate.getYear() - dateOfBirth.getYear();
         if (joinDate.getMonth() < dateOfBirth.getMonth()) {
             age--;
@@ -42,11 +42,11 @@ public class Account {
         return gender;
     }
 
-    public DateClass getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public DateClass getJoinDate() {
+    public Date getJoinDate() {
         return joinDate;
     }
     
