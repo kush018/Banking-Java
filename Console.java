@@ -242,15 +242,57 @@ public class Console {
                 System.out.println("Invalid number");
             }
         }
+        else if (commandArray[0].equals("getaccountid")) {
+            String fullName = "";
+            for (int i = 1; i < commandArray.length; i++) {
+                fullName += commandArray[i];
+                if (i != commandArray.length - 1) {
+                    fullName += " ";
+                }
+            }
+            int accountId = getAccountId(accounts, fullName);
+            if (accountId == -1) {
+                System.out.println("Account with name " + fullName + " does not exist.");
+            }
+            else {
+                System.out.println("The account id is " + accountId);
+            }
+        }
+        else {
+            System.out.println("Command entered invalid or does not exist. Enter \"help\" for a list of valid commands.");
+        }
     }
 
     public void newAccount() throws IOException {
         String firstName = getInput("First Name: ");
+        if (firstName.equals("--cancel--")) {
+            System.out.println("Operation cancelled.");
+            return;
+        }
         String lastName = getInput("Last Name: ");
+        if (lastName.equals("--cancel--")) {
+            System.out.println("Operation cancelled.");
+            return;
+        }
         String gender = getInput("Gender: ");
+        if (gender.equals("--cancel--")) {
+            System.out.println("Operation cancelled.");
+            return;
+        }
         String dateOfBirthString = getInput("Enter Date of Birth (dd/mm/yyyy): ");
+        if (dateOfBirthString.equals("--cancel--")) {
+            System.out.println("Operation cancelled.");
+            return;
+        }
         String[] dateOfBirthArray = dateOfBirthString.split("/");
-        DateClass dateOfBirth = new DateClass(Integer.parseInt(dateOfBirthArray[0]), Integer.parseInt(dateOfBirthArray[1]), Integer.parseInt(dateOfBirthArray[2]));
+        DateClass dateOfBirth;
+        try {
+            dateOfBirth = new DateClass(Integer.parseInt(dateOfBirthArray[0]), Integer.parseInt(dateOfBirthArray[1]), Integer.parseInt(dateOfBirthArray[2]));
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid date entered. Operation cancelled.");
+            return;
+        }
         Account account = new Account(firstName, lastName, gender, dateOfBirth);
         accounts = addElementAccount(accounts, account);
         System.out.println("Account created successfully.");
@@ -272,5 +314,16 @@ public class Console {
         }
         newArray[arrayLength] = element;
         return newArray;
+    }
+
+    public int getAccountId(Account[] accountArray, String fullName) {
+        int id = -1;
+        for (int i = 0; i < accountArray.length; i++) {
+            String accountFullName = accountArray[i].getFirstName() + " " + accountArray[i].getLastName();
+            if (fullName.equals(accountFullName)) {
+                id = i;
+            }
+        }
+        return id;
     }
 }

@@ -52,12 +52,12 @@ public class Account {
     
     public void depositMoney(double deposit) {
         balance += deposit;
-        addElementDouble(transactionHistory, deposit);
+        transactionHistory = addElementDouble(transactionHistory, deposit);
     }
 
     public void withdrawMoney(double withdrawal) {
         balance -= withdrawal;
-        addElementDouble(transactionHistory, -withdrawal);
+        transactionHistory = addElementDouble(transactionHistory, -withdrawal);
     }
 
     public void viewAccountDetails() {
@@ -75,7 +75,7 @@ public class Account {
         System.out.println("Account Transaction History: ");
         for (int i = 0; i < transactionHistory.length; i++) {
             if (transactionHistory[i] < 0) {
-                System.out.println("Withdrawal: " + transactionHistory[i]);
+                System.out.println("Withdrawal: " + -transactionHistory[i]);
             }
             else {
                 System.out.println("Deposit: " + transactionHistory[i]);
