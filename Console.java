@@ -3,6 +3,7 @@ import java.io.*;
 public class Console {
 
     Account[] accounts = new Account[] { };
+    int[] deletedAccounts = new int[] { };
 
     public String getInput(String prompt) throws IOException {
         BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
@@ -43,6 +44,9 @@ public class Console {
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
             }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
+            }
         }
         else if (commandArray[0].equals("showhistory")) {
             try {
@@ -60,6 +64,9 @@ public class Console {
             }
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
+            }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
             }
         }
         else if (commandArray[0].equals("deposit")) {
@@ -86,6 +93,9 @@ public class Console {
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
             }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
+            }
         }
         else if (commandArray[0].equals("withdraw")) {
             try {
@@ -111,6 +121,9 @@ public class Console {
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
             }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
+            }
         }
         else if (commandArray[0].equals("getfirstname")) {
             try {
@@ -128,6 +141,9 @@ public class Console {
             }
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
+            }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
             }
         }
         else if (commandArray[0].equals("getlastname")) {
@@ -147,6 +163,9 @@ public class Console {
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
             }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
+            }
         }
         else if (commandArray[0].equals("getage")) {
             try {
@@ -164,6 +183,9 @@ public class Console {
             }
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
+            }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
             }
         }
         else if (commandArray[0].equals("getgender")) {
@@ -183,6 +205,9 @@ public class Console {
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
             }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
+            }
         }
         else if (commandArray[0].equals("getbalance")) {
             try {
@@ -200,6 +225,9 @@ public class Console {
             }
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
+            }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
             }
         }
         else if (commandArray[0].equals("getdob")) {
@@ -221,6 +249,9 @@ public class Console {
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
             }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
+            }
         }
         else if (commandArray[0].equals("getjoindate")) {
             try {
@@ -241,6 +272,9 @@ public class Console {
             catch (NumberFormatException e) {
                 System.out.println("Invalid number");
             }
+            catch (NullPointerException e) {
+                System.out.println("Invalid account number.");
+            }
         }
         else if (commandArray[0].equals("getaccountid")) {
             String fullName = "";
@@ -256,6 +290,19 @@ public class Console {
             }
             else {
                 System.out.println("The account id is " + accountId);
+            }
+        }
+        else if (commandArray[0].equals("delete")) {
+            try {
+                int accountId = Integer.parseInt(commandArray[1]);
+                deleteAccount(accountId);
+                System.out.println("Account deleted successfully");
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Invalid account number");
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Invalid number");
             }
         }
         else {
@@ -294,7 +341,13 @@ public class Console {
             return;
         }
         Account account = new Account(firstName, lastName, gender, dateOfBirth);
-        accounts = addElementAccount(accounts, account);
+        if (deletedAccounts.length == 0) {
+            accounts = addElementAccount(accounts, account);
+        }
+        else {
+            accounts[deletedAccounts[0]] = account;
+            deletedAccounts = deleteElementInt(deletedAccounts, 0);
+        }
         System.out.println("Account created successfully.");
     }
 
@@ -302,7 +355,10 @@ public class Console {
         System.out.println("All available accounts are listed below:");
         for (int i = 0; i < accounts.length; i++) {
             Account account = accounts[i];
-            System.out.println("[" + i + "]" + " " + account.getFirstName() + " " + account.getLastName() + " Age: " + account.getAge() + " Balance: " + account.getBalance());
+            try {
+                System.out.println("[" + i + "]" + " " + account.getFirstName() + " " + account.getLastName() + " Age: " + account.getAge() + " Balance: " + account.getBalance());
+            }
+            catch (NullPointerException e) { }
         }
     }
 
@@ -325,5 +381,32 @@ public class Console {
             }
         }
         return id;
+    }
+
+    public void deleteAccount(int accountId) {
+        if (accounts[accountId] != null) {
+            accounts[accountId] = null;
+            deletedAccounts = addElementInt(deletedAccounts, accountId);
+        }
+    }
+
+    public int[] addElementInt(int[] array, int element) {
+        int arrayLength = array.length;
+        int[] newArray = new int[arrayLength + 1];
+        for (int i = 0; i < arrayLength; i++) {
+            newArray[i] = array[i];
+        }
+        newArray[arrayLength] = element;
+        return newArray;
+    }
+
+    public int[] deleteElementInt(int[] array, int elementIndex) {
+        int[] newArray = new int[array.length - 1];
+        for (int i = 0; i < array.length; i++) {
+            if (i != elementIndex) {
+                newArray = addElementInt(newArray, array[i]);
+            }
+        }
+        return newArray;
     }
 }
