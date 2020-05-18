@@ -349,6 +349,7 @@ public class Console {
             deletedAccounts = deleteElementInt(deletedAccounts, 0);
         }
         System.out.println("Account created successfully.");
+        System.out.println("The account id is: " + (accounts.length - 1));
     }
 
     public void showAccounts() {
