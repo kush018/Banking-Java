@@ -305,6 +305,9 @@ public class Console {
                 System.out.println("Invalid number");
             }
         }
+        else if (commandArray[0].equals("help")) {
+            help();
+        }
         else {
             System.out.println("Command entered invalid or does not exist. Enter \"help\" for a list of valid commands.");
         }
@@ -409,5 +412,20 @@ public class Console {
             }
         }
         return newArray;
+    }
+
+    public void help() {
+        System.out.println("new : creates new account");
+        System.out.println("getaccountid [full name] : gives account id based on full name");
+        System.out.println("delete [account id] : deletes account");
+        System.out.println("accounts : gives list of all accounts");
+        System.out.println("showdetails [account id] : shows details of account");
+        System.out.println("deposit [account id] : deposits money to account");
+        System.out.println("withdraw [account id] : withdraws money from account");
+        System.out.println("get[attribute] [account id] : get attribute of account");
+        System.out.println("attributes : age, gender, firstname, lastname, balance, dob, joindate");
+        System.out.println("showhistory [account id] : shows transaction history of an account");
+        System.out.println("entering x exits program");
+        System.out.println("NOTE: entering --cancel-- while creating new account cancels account creation");
     }
 }
