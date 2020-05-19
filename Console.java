@@ -28,282 +28,45 @@ public class Console {
             showAccounts();
         }
         else if (commandArray[0].equals("showdetails")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    account.viewAccountDetails();
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            showDetails(commandArray);
         }
         else if (commandArray[0].equals("showhistory")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    account.viewTransactionHistory();
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            showHistory(commandArray);
         }
         else if (commandArray[0].equals("deposit")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    int depositAmount = Integer.parseInt(getInput("Enter Amount to Deposit: "));
-                    if (getInput("Are you sure you want to deposit " + depositAmount + " to account number " + accountNumber + " (y/n): ").equals("y")) {
-                        account.depositMoney(depositAmount);
-                        System.out.println("Successfully deposited " + depositAmount + " to account number " + accountNumber + ".");
-                    }
-                    else {
-                        System.out.println("Deposit cancelled.");
-                    }
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            deposit(commandArray);
         }
         else if (commandArray[0].equals("withdraw")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    int withdrawalAmount = Integer.parseInt(getInput("Enter Amount to Withdraw: "));
-                    if (getInput("Are you sure you want to withdraw " + withdrawalAmount + " from account number " + accountNumber + " (y/n): ").equals("y")) {
-                        account.withdrawMoney(withdrawalAmount);
-                        System.out.println("Successfully withdrew " + withdrawalAmount + " from account number " + accountNumber + ".");
-                    }
-                    else {
-                        System.out.println("Withdrawal cancelled.");
-                    }
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            withdraw(commandArray);
         }
         else if (commandArray[0].equals("getfirstname")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    System.out.println(account.getFirstName());
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            getFirstName(commandArray);
         }
         else if (commandArray[0].equals("getlastname")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    System.out.println(account.getLastName());
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            getLastName(commandArray);
         }
         else if (commandArray[0].equals("getage")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    System.out.println(account.getAge());
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            getAge(commandArray);
         }
         else if (commandArray[0].equals("getgender")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    System.out.println(account.getGender());
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            getGender(commandArray);
         }
         else if (commandArray[0].equals("getbalance")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    System.out.println(account.getBalance());
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            getBalance(commandArray);
         }
         else if (commandArray[0].equals("getdob")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    Date DOB = account.getDateOfBirth();
-                    System.out.println("dd/mm/yyyy");
-                    System.out.println(DOB.getDate() + "/" + DOB.getMonth() + "/" + DOB.getYear());
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            getDob(commandArray);
         }
         else if (commandArray[0].equals("getjoindate")) {
-            try {
-                if (commandArray.length == 2) {
-                    int accountNumber = Integer.parseInt(commandArray[1]);
-                    Account account = accounts[accountNumber];
-                    Date joinDate = account.getJoinDate();
-                    System.out.println("dd/mm/yyyy");
-                    System.out.println(joinDate.getDate() + "/" + joinDate.getMonth() + "/" + joinDate.getYear());
-                }
-                else {
-                    System.out.println("Invalid command. Please enter account number.");
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
-            catch (NullPointerException e) {
-                System.out.println("Invalid account number.");
-            }
+            getJoinDate(commandArray);
         }
         else if (commandArray[0].equals("getaccountid")) {
-            String fullName = "";
-            for (int i = 1; i < commandArray.length; i++) {
-                fullName += commandArray[i];
-                if (i != commandArray.length - 1) {
-                    fullName += " ";
-                }
-            }
-            int accountId = getAccountId(accounts, fullName);
-            if (accountId == -1) {
-                System.out.println("Account with name " + fullName + " does not exist.");
-            }
-            else {
-                System.out.println("The account id is " + accountId);
-            }
+            getAccountId(commandArray);
         }
         else if (commandArray[0].equals("delete")) {
-            try {
-                int accountId = Integer.parseInt(commandArray[1]);
-                deleteAccount(accountId);
-                System.out.println("Account deleted successfully");
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid account number");
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Invalid number");
-            }
+            int accountId = Integer.parseInt(commandArray[1]);
+            deleteAccount(accountId);
+            System.out.println("Account deleted successfully");
         }
         else if (commandArray[0].equals("help")) {
             help();
@@ -366,6 +129,97 @@ public class Console {
         }
     }
 
+    public void getFirstName(String[] commandArray) {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            System.out.println(account.getFirstName());
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void showDetails(String[] commandArray) {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            account.viewAccountDetails();
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void withdraw(String[] commandArray) throws IOException {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            int withdrawalAmount = Integer.parseInt(getInput("Enter Amount to Withdraw: "));
+            if (getInput("Are you sure you want to withdraw " + withdrawalAmount + " from account number " + accountNumber + " (y/n): ").equals("y")) {
+                account.withdrawMoney(withdrawalAmount);
+                System.out.println("Successfully withdrew " + withdrawalAmount + " from account number " + accountNumber + ".");
+            }
+            else {
+                System.out.println("Withdrawal cancelled.");
+            }
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void getAge(String[] commandArray) {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            System.out.println(account.getAge());
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void getLastName(String[] commandArray) {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            System.out.println(account.getLastName());
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void deposit(String[] commandArray) throws IOException {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            int depositAmount = Integer.parseInt(getInput("Enter Amount to Deposit: "));
+            if (getInput("Are you sure you want to deposit " + depositAmount + " to account number " + accountNumber + " (y/n): ").equals("y")) {
+                account.depositMoney(depositAmount);
+                System.out.println("Successfully deposited " + depositAmount + " to account number " + accountNumber + ".");
+            }
+            else {
+                System.out.println("Deposit cancelled.");
+            }
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void showHistory(String[] commandArray) {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            account.viewTransactionHistory();
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
     public Account[] addElementAccount(Account[] array, Account element) {
         int arrayLength = array.length;
         Account[] newArray = new Account[arrayLength + 1];
@@ -412,6 +266,71 @@ public class Console {
             }
         }
         return newArray;
+    }
+
+    public void getGender(String[] commandArray) {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            System.out.println(account.getGender());
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void getBalance(String[] commandArray) {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            System.out.println(account.getBalance());
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void getDob(String[] commandArray) {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            Date DOB = account.getDateOfBirth();
+            System.out.println("dd/mm/yyyy");
+            System.out.println(DOB.getDate() + "/" + DOB.getMonth() + "/" + DOB.getYear());
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void getJoinDate(String[] commandArray) {
+        if (commandArray.length == 2) {
+            int accountNumber = Integer.parseInt(commandArray[1]);
+            Account account = accounts[accountNumber];
+            Date joinDate = account.getJoinDate();
+            System.out.println("dd/mm/yyyy");
+            System.out.println(joinDate.getDate() + "/" + joinDate.getMonth() + "/" + joinDate.getYear());
+        }
+        else {
+            System.out.println("Invalid command. Please enter account number.");
+        }
+    }
+
+    public void getAccountId(String[] commandArray) {
+        String fullName = "";
+        for (int i = 1; i < commandArray.length; i++) {
+            fullName += commandArray[i];
+            if (i != commandArray.length - 1) {
+                fullName += " ";
+            }
+        }
+        int accountId = getAccountId(accounts, fullName);
+        if (accountId == -1) {
+            System.out.println("Account with name " + fullName + " does not exist.");
+        }
+        else {
+            System.out.println("The account id is " + accountId);
+        }
     }
 
     public void help() {

@@ -10,6 +10,15 @@ public class Run {
                 try {
                     console.executeCommand(command);
                 }
+                catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Invalid account number");
+                }
+                catch (NumberFormatException e) {
+                    System.out.println("Invalid number");
+                }
+                catch (NullPointerException e) {
+                    System.out.println("Invalid account number.");
+                }
                 catch (Exception e) {
                     System.out.println("There was an exception.");
                     e.printStackTrace();
