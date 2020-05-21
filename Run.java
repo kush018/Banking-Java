@@ -1,9 +1,11 @@
 public class Run {
     public static void main(String[] args) throws java.io.IOException {
         Console console = new Console();
+        System.out.println("Welcome to banking console! Enter \"help\" to get a list of all valid commands.");
         while (true) {
             String command = console.getInput();
             if (command.equals("x")) {
+                System.out.println("Bye!");
                 System.exit(0);
             }
             else {

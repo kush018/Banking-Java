@@ -302,6 +302,7 @@ public class Console {
         System.out.println("get[attribute] [account id] : get attribute of account");
         System.out.println("attributes : age, gender, firstname, lastname, balance, dob, joindate");
         System.out.println("showhistory [account id] : shows transaction history of an account");
+        System.out.println("help : get this list");
         System.out.println("entering x exits program");
         System.out.println("NOTE: entering --cancel-- while creating new account cancels account creation");
         System.out.println("NOTE: extra attributes will be ignored");
