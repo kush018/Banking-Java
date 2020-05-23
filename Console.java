@@ -1,8 +1,10 @@
 import java.io.*;
 
-public class Console {
+public class Console implements Serializable {
 
-    Account[] accounts = new Account[] { };
+    private static final long serialVersionUID = 1L;
+    
+    Account[] accounts = new Account[] {};
     int[] deletedAccounts = new int[] { };
 
     public String getInput(String prompt) throws IOException {

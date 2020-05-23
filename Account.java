@@ -1,4 +1,9 @@
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    
     private double balance;
     private int age;
     private String firstName, lastName, gender;

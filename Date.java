@@ -1,6 +1,10 @@
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Date {
+public class Date implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    
     private int date, month, year;
 
     public Date(int date, int month, int year) {
