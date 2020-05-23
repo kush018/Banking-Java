@@ -3,7 +3,7 @@ import java.io.*;
 public class Console implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     Account[] accounts = new Account[] {};
     int[] deletedAccounts = new int[] { };
 
@@ -68,7 +68,6 @@ public class Console implements Serializable {
         else if (commandArray[0].equals("delete")) {
             int accountId = Integer.parseInt(commandArray[1]);
             deleteAccount(accountId);
-            System.out.println("Account deleted successfully");
         }
         else if (commandArray[0].equals("help")) {
             help();
@@ -80,6 +79,7 @@ public class Console implements Serializable {
 
     public void newAccount() throws IOException {
         String firstName = getInput("First Name: ");
+        int accountId;
         if (firstName.equals("--cancel--")) {
             System.out.println("Operation cancelled.");
             return;
@@ -111,13 +111,15 @@ public class Console implements Serializable {
         Account account = new Account(firstName, lastName, gender, dateOfBirth);
         if (deletedAccounts.length == 0) {
             accounts = addElementAccount(accounts, account);
+            accountId = accounts.length -1;
         }
         else {
+            accountId = deletedAccounts[0];
             accounts[deletedAccounts[0]] = account;
             deletedAccounts = deleteElementInt(deletedAccounts, 0);
         }
         System.out.println("Account created successfully.");
-        System.out.println("The account id is: " + (accounts.length - 1));
+        System.out.println("The account id is: " + accountId);
     }
 
     public void showAccounts() {
@@ -202,7 +204,11 @@ public class Console implements Serializable {
     public int getAccountId(Account[] accountArray, String fullName) {
         int id = -1;
         for (int i = 0; i < accountArray.length; i++) {
-            String accountFullName = accountArray[i].getFirstName() + " " + accountArray[i].getLastName();
+            String accountFullName = "";
+            try {
+                accountFullName = accountArray[i].getFirstName() + " " + accountArray[i].getLastName();
+            }
+            catch (NullPointerException e) { }
             if (fullName.equals(accountFullName)) {
                 id = i;
             }
