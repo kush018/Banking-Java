@@ -41,26 +41,39 @@ public class Console implements Serializable {
         else if (commandArray[0].equals("withdraw")) {
             withdraw(Integer.parseInt(commandArray[1]));
         }
+        //removed function
         else if (commandArray[0].equals("getfirstname")) {
-            getFirstName(Integer.parseInt(commandArray[1]));
+            Account account = accounts[Integer.parseInt(commandArray[0])];
+            System.out.println(account.getFirstName());
         }
+        //removed function
         else if (commandArray[0].equals("getlastname")) {
-            getLastName(Integer.parseInt(commandArray[1]));
+            Account account = accounts[Integer.parseInt(commandArray[0])];
+            System.out.println(account.getLastName());
         }
         else if (commandArray[0].equals("getage")) {
-            getAge(Integer.parseInt(commandArray[1]));
+            Account account = accounts[Integer.parseInt(commandArray[0])];
+            System.out.println(account.getAge());
         }
         else if (commandArray[0].equals("getgender")) {
-            getGender(Integer.parseInt(commandArray[1]));
+            Account account = accounts[Integer.parseInt(commandArray[0])];
+            System.out.println(account.getGender());
         }
         else if (commandArray[0].equals("getbalance")) {
-            getBalance(Integer.parseInt(commandArray[1]));
+            Account account = accounts[Integer.parseInt(commandArray[0])];
+            System.out.println(account.getBalance());
         }
         else if (commandArray[0].equals("getdob")) {
-            getDob(Integer.parseInt(commandArray[1]));
+            Account account = accounts[Integer.parseInt(commandArray[0])];
+            Date dateOfBirth = account.getDateOfBirth();
+            System.out.println("dd/mm/yyyy");
+            System.out.println(dateOfBirth.getDate() + "/" + dateOfBirth.getMonth() + "/" + dateOfBirth.getYear());
         }
         else if (commandArray[0].equals("getjoindate")) {
-            getJoinDate(Integer.parseInt(commandArray[1]));
+            Account account = accounts[Integer.parseInt(commandArray[0])];
+            Date joinDate = account.getJoinDate();
+            System.out.println("dd/mm/yyyy");
+            System.out.println(joinDate.getDate() + "/" + joinDate.getMonth() + "/" + joinDate.getYear());
         }
         else if (commandArray[0].equals("getaccountid")) {
             getAccountId(commandArray);
@@ -134,12 +147,6 @@ public class Console implements Serializable {
     }
 
     //optimised
-    public void getFirstName(int accountId) {
-        Account account = accounts[accountId];
-        System.out.println(account.getFirstName());
-    }
-
-    //optimised
     public void showDetails(int accountId) {
         Account account = accounts[accountId];
         account.viewAccountDetails();
@@ -156,18 +163,6 @@ public class Console implements Serializable {
         else {
             System.out.println("Withdrawal cancelled.");
         }
-    }
-
-    //optimised
-    public void getAge(int accountId) {
-        Account account = accounts[accountId];
-        System.out.println(account.getAge());
-    }
-
-    //optimised
-    public void getLastName(int accountId) {
-        Account account = accounts[accountId];
-        System.out.println(account.getLastName());
     }
 
     //optimised
@@ -250,34 +245,6 @@ public class Console implements Serializable {
             }
         }
         return newArray;
-    }
-
-    //optimised
-    public void getGender(int accountId) {
-        Account account = accounts[accountId];
-        System.out.println(account.getGender());
-    }
-
-    //optimised
-    public void getBalance(int accountId) {
-        Account account = accounts[accountId];
-        System.out.println(account.getBalance());
-    }
-
-    //optimised
-    public void getDob(int accountId) {
-            Account account = accounts[accountId];
-            Date DOB = account.getDateOfBirth();
-            System.out.println("dd/mm/yyyy");
-            System.out.println(DOB.getDate() + "/" + DOB.getMonth() + "/" + DOB.getYear());
-    }
-
-    //optimised
-    public void getJoinDate(int accountId) {
-        Account account = accounts[accountId];
-        Date joinDate = account.getJoinDate();
-        System.out.println("dd/mm/yyyy");
-        System.out.println(joinDate.getDate() + "/" + joinDate.getMonth() + "/" + joinDate.getYear());
     }
 
     //already optimised, not possible to optimise more
