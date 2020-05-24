@@ -5,7 +5,7 @@ public class Run {
         Console console;
         try {
             console = readConsoleObject("accounts.acc");
-            System.out.println("Save found. " + (console.accounts.length - console.deletedAccounts.length) + " accounts loaded");
+            System.out.println("Save found. " + (console.accounts.length - console.deletedAccounts.length) + " account(s) loaded");
         }
         catch (FileNotFoundException e) {
             console = new Console();
