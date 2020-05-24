@@ -5,7 +5,7 @@ public class Run {
         Console console;
         try {
             console = readConsoleObject("accounts.acc");
-            System.out.println("Save found. " + console.accounts.length + " accounts loaded");
+            System.out.println("Save found. " + (console.accounts.length - console.deletedAccounts.length) + " accounts loaded");
         }
         catch (FileNotFoundException e) {
             console = new Console();
@@ -23,6 +23,7 @@ public class Run {
             else {
                 try {
                     console.executeCommand(command);
+                    writeConsoleObject(console, "accounts.acc");
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println("Invalid account number");
                 } catch (NumberFormatException e) {
