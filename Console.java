@@ -196,7 +196,7 @@ public class Console implements Serializable {
     }
 
     //already optimised, not possible to optimise more
-    public int getAccountId(Account[] accountArray, String fullName) {
+    public int searchAccountId(Account[] accountArray, String fullName) {
         int id = -1;
         for (int i = 0; i < accountArray.length; i++) {
             String accountFullName = "";
@@ -256,7 +256,7 @@ public class Console implements Serializable {
                 fullName += " ";
             }
         }
-        int accountId = getAccountId(accounts, fullName);
+        int accountId = searchAccountId(accounts, fullName);
         if (accountId == -1) {
             System.out.println("Account with name " + fullName + " does not exist.");
         }
