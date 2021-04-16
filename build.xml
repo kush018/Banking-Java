@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<project name="Banking-Java" default="compile">
+    <target name="cleanup">
+        <delete dir="bin"/>
+        <mkdir dir="bin"/>
+    </target>
+
+    <target name="compile" depends="cleanup">
+        <javac srcdir="src" destdir="bin"/>
+    </target>
+
+    <target name="jar">
+        <jar destfile="banking.jar" basedir="bin" manifest="META-INF/MANIFEST.MF"/>
+    </target>
+
+    <target name="run" depends="jar">
+        <java jar="banking.jar" fork="true"/>
+    </target>
+
+    <target name="delete-acc">
+        <delete>
+            <fileset dir="." includes="**/*.acc"/>
+        </delete>
+    </target>
+</project>

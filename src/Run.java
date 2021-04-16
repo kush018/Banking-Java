@@ -2,9 +2,14 @@ import java.io.*;
 
 public class Run {
     public static void main(String[] args) throws java.io.IOException, ClassNotFoundException {
+        String accountsFile = "accounts.acc";
+        if (args.length != 0) {
+            accountsFile = args[0];
+        }
+
         Console console;
         try {
-            console = readConsoleObject("accounts.acc");
+            console = readConsoleObject(accountsFile);
             System.out.println("Save found. " + (console.accounts.length - console.deletedAccounts.length) + " account(s) loaded");
         }
         catch (FileNotFoundException e) {
@@ -15,7 +20,7 @@ public class Run {
         while (true) {
             String command = console.getInput();
             if (command.equals("x")) {
-                writeConsoleObject(console, "accounts.acc");
+                writeConsoleObject(console, accountsFile);
                 System.out.println("Accounts saved successfully");
                 System.out.println("Bye!");
                 System.exit(0);
@@ -23,7 +28,7 @@ public class Run {
             else {
                 try {
                     console.executeCommand(command);
-                    writeConsoleObject(console, "accounts.acc");
+                    writeConsoleObject(console, accountsFile);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println("Invalid account number");
                 } catch (NumberFormatException e) {
